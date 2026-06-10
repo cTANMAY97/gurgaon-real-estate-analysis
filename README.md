@@ -1,2 +1,2 @@
 # gurgaon-real-estate-analysis
-End-to-end Real Estate Data Analysis project involving data cleaning, EDA, visualization, and business insights generation using Python.
+Exploratory Data Analysis (EDA) of Gurgaon Real Estate data using Python, Pandas, NumPy, Matplotlib, and Seaborn to uncover property pricing trends, locality insights, and market patterns.
