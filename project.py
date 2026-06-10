@@ -58,9 +58,9 @@ else:
     print("RERA-approved properties do not command a price premium.")
 
 #7. How does area (sqft) impact property price?
-sns.scatterplot(data=df, x='area', y='price')
-plt.title('Area vs Price')
-plt.xlabel('Area (sqft)')           
+sns.boxplot(data=df, x='area', y='price')
+plt.title('Area vs Price')              
+plt.xlabel('Area (sqft)')
 plt.ylabel('Price (in crores)')
 plt.show()
 
@@ -84,3 +84,11 @@ print(f"The most expensive property type is {most_expensive_property_type}.")
 #10. Which BHK configuration is most expensive based on per sqft rate?
 most_expensive_bhk = df.groupby('bhk_count')['rate_per_sqft'].mean().idxmax()
 print(f"The most expensive BHK configuration on average is {most_expensive_bhk} BHK.")
+
+#11. How does the price distribution look across different localities?
+plt.figure(figsize=(15, 6))
+plt.title('Price Distribution Across Localities')
+sns.boxplot(data=df, x='locality', y='price')
+plt.xlabel('Locality')      
+plt.ylabel('Price (in crores)')
+plt.show()
