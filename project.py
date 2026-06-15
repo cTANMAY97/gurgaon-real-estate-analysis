@@ -22,6 +22,8 @@ df['status'] = df['status'].str.strip().str.lower()
 df['rera_approval'] = df['rera_approval'].str.strip().str.lower().map({'approved by rera': True, 'not approved by rera': False})
 df['flat_type'] = df['flat_type'].str.strip().str.lower()
 
+df.to_csv('cleaned_data.csv', index=False)
+
 #1. Which is the costliest flat in the dataset?
 costliest_flat = df.loc[df['price'].idxmax()]
 print(f"The costliest flat is a {costliest_flat['bhk_count']} BHK flat located in {costliest_flat['locality']} priced at {costliest_flat['price']/10000000} crores in {costliest_flat['society']} society.") 
@@ -92,3 +94,23 @@ sns.boxplot(data=df, x='locality', y='price')
 plt.xlabel('Locality')      
 plt.ylabel('Price (in crores)')
 plt.show()
+
+#12. Is there a correlation between area and price?
+plt.figure(figsize=(8,5))
+
+sns.scatterplot(data=df, x='area', y='price')
+
+sns.regplot(
+    data=df,
+    x='area',
+    y='price',
+    scatter=False
+)
+
+plt.title('Area vs Price')
+plt.xlabel('Area (sqft)')
+plt.ylabel('Price')
+plt.show()
+
+
+
